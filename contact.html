@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Citi Surgeons Hospital | Benin City</title>
+  <meta name="description" content="Contact Citi Surgeons Hospital in Benin City. Book appointments, reach our emergency line, or send us a message." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D2B5E',
+            slate2: '#1E3A5F',
+            accent: '#2E6DA4',
+            navy: '#060F1E',
+            tint: '#F4F7FB',
+            dark: '#0F1923',
+            muted: '#5A6A7A'
+          },
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; color: #0F1923; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .hero-grid {
+      background-image: linear-gradient(rgba(46,109,164,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(46,109,164,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    @keyframes ping { 75%,100%{transform:scale(2);opacity:0;} }
+    .wa-ping { animation: ping 1.8s cubic-bezier(0,0,0.2,1) infinite; }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+    .wa-float { animation: fadeInUp 0.5s ease 2s both; }
+    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- NAVBAR -->
+  <nav
+    x-data="{ scrolled: false, open: false }"
+    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 40 })"
+    :class="scrolled ? 'bg-white/95 nav-blur shadow-md' : 'bg-[#0D2B5E]'"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <div class="w-9 h-9 rounded-md flex items-center justify-center" :class="scrolled ? 'bg-primary' : 'bg-white/20'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block font-heading font-bold text-base leading-none" :class="scrolled ? 'text-primary' : 'text-white'">Citi Surgeons</span>
+            <span class="block text-[10px] font-medium tracking-widest uppercase" :class="scrolled ? 'text-muted' : 'text-white/60'">Hospital</span>
+          </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium transition-colors" x-bind:class="scrolled ? 'text-dark hover:text-accent' : 'text-white/80 hover:text-white'">Home</a>
+          <a href="about.html" class="px-4 py-2 text-sm font-medium transition-colors" x-bind:class="scrolled ? 'text-dark hover:text-accent' : 'text-white/80 hover:text-white'">About</a>
+          <a href="services.html" class="px-4 py-2 text-sm font-medium transition-colors" x-bind:class="scrolled ? 'text-dark hover:text-accent' : 'text-white/80 hover:text-white'">Services</a>
+          <a href="team.html" class="px-4 py-2 text-sm font-medium transition-colors" x-bind:class="scrolled ? 'text-dark hover:text-accent' : 'text-white/80 hover:text-white'">Our Team</a>
+          <a href="contact.html" class="px-4 py-2 text-sm font-medium border-b-2 border-accent text-accent">Contact</a>
+        </div>
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="contact.html" class="bg-primary hover:bg-slate2 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors">
+            Book Appointment
+          </a>
+        </div>
+        <button @click="open = !open" class="lg:hidden p-2 rounded-md" x-bind:class="scrolled ? 'text-dark hover:bg-gray-100' : 'text-white hover:bg-white/10'">
+          <svg x-show="!open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg x-show="open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div x-show="open" x-transition class="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+      <div class="px-4 py-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Home</a>
+        <a href="about.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">About</a>
+        <a href="services.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Services</a>
+        <a href="team.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Our Team</a>
+        <a href="contact.html" class="block px-3 py-2.5 text-sm font-medium text-accent border-l-2 border-accent bg-tint rounded-r-md">Contact</a>
+        <a href="contact.html" class="block mt-3 bg-primary text-white text-sm font-semibold px-4 py-3 rounded-md text-center">Book Appointment</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="relative bg-primary hero-grid overflow-hidden pt-32 pb-20">
+    <div class="absolute top-0 left-0 right-0 h-px bg-accent opacity-60"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-2 text-xs text-white/40 mb-6 font-medium tracking-wide">
+        <a href="index.html" class="hover:text-white/70 transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-white/70">Contact</span>
+      </nav>
+      <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Get In Touch</p>
+      <h1 class="font-heading font-extrabold text-white text-4xl lg:text-5xl mb-4 leading-tight">Contact Us</h1>
+      <p class="text-white/60 text-lg max-w-xl leading-relaxed">We're here when you need us — for appointments, enquiries, and 24/7 emergency surgical care.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CARDS -->
+  <section class="py-16 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-3 gap-5">
+
+        <!-- Bookings -->
+        <div class="border border-gray-100 rounded-lg p-7 hover:border-accent/30 hover:shadow-md transition-all group" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-12 h-12 bg-tint rounded-md flex items-center justify-center mb-5 group-hover:bg-primary transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-2">Appointments & Enquiries</p>
+          <a href="tel:+2348032161331" class="block font-heading font-bold text-dark text-xl mb-1 hover:text-accent transition-colors">+234-803-216-1331</a>
+          <p class="text-muted text-sm leading-relaxed">Call or WhatsApp to book a consultation with one of our specialists.</p>
+        </div>
+
+        <!-- Emergency -->
+        <div class="border-2 border-red-200 bg-red-50/30 rounded-lg p-7 hover:border-red-300 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="80">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 bg-red-100 rounded-md flex items-center justify-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <span class="text-[10px] font-bold tracking-widest uppercase text-red-700 bg-red-100 border border-red-200 px-2 py-0.5 rounded">24 / 7</span>
+          </div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-[#B91C1C] mb-2">Emergency Line</p>
+          <a href="tel:+2348074278057" class="block font-heading font-bold text-[#B91C1C] text-xl mb-1 hover:text-red-800 transition-colors">+234-807-427-8057</a>
+          <p class="text-muted text-sm leading-relaxed">Our Accidents & Emergencies unit is staffed and ready at all times.</p>
+        </div>
+
+        <!-- Email -->
+        <div class="border border-gray-100 rounded-lg p-7 hover:border-accent/30 hover:shadow-md transition-all group" data-aos="fade-up" data-aos-delay="160">
+          <div class="w-12 h-12 bg-tint rounded-md flex items-center justify-center mb-5 group-hover:bg-primary transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-2">Email</p>
+          <a href="mailto:citisurgeons@gmail.com" class="block font-heading font-bold text-dark text-lg mb-1 hover:text-accent transition-colors break-all">citisurgeons@gmail.com</a>
+          <p class="text-muted text-sm leading-relaxed">For non-urgent enquiries. We respond within one business day.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP SECTION -->
+  <section class="py-16 bg-primary relative overflow-hidden">
+    <div class="absolute inset-0 hero-grid opacity-60"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Instant Access</p>
+      <h2 class="font-heading font-extrabold text-white text-3xl lg:text-4xl mb-4 leading-tight">Skip the Queue.<br/>Book Instantly on WhatsApp.</h2>
+      <p class="text-white/60 text-base leading-relaxed mb-8 max-w-xl mx-auto">Our AI Receptionist is available 24 hours a day to help you book appointments, answer questions, and direct you to the right specialist — no hold music, no waiting.</p>
+      <a
+        href="https://wa.me/2348032161331"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold px-8 py-4 rounded-md transition-colors shadow-lg text-base"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Chat with Us on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM + LOCATION -->
+  <section class="py-24 bg-tint">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+        <!-- FORM -->
+        <div
+          x-data="{
+            submitted: false,
+            loading: false,
+            form: { name:'', phone:'', email:'', service:'', date:'', message:'' },
+            submit() {
+              this.loading = true;
+              setTimeout(() => { this.loading = false; this.submitted = true; }, 1200);
+            }
+          }"
+          class="bg-white border border-gray-100 rounded-lg shadow-sm p-8 lg:p-10"
+          data-aos="fade-right"
+        >
+          <!-- Success state -->
+          <div x-show="submitted" x-transition class="text-center py-8">
+            <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3 class="font-heading font-bold text-dark text-xl mb-2">Message Sent</h3>
+            <p class="text-muted text-sm leading-relaxed mb-6">Thank you — we'll be in touch shortly. For a faster response, contact us directly on WhatsApp.</p>
+            <a href="https://wa.me/2348032161331" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold px-6 py-3 rounded-md transition-colors text-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Open WhatsApp
+            </a>
+          </div>
+
+          <!-- Form -->
+          <div x-show="!submitted">
+            <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-2">Send a Message</p>
+            <h2 class="font-heading font-extrabold text-primary text-2xl mb-6">Book an Appointment</h2>
+
+            <form @submit.prevent="submit" class="space-y-5">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-semibold text-dark mb-1.5 tracking-wide">Full Name <span class="text-red-500">*</span></label>
+                  <input
+                    x-model="form.name"
+                    type="text" required
+                    placeholder="e.g. Chukwuemeka Obi"
+                    class="w-full border border-gray-200 rounded-md px-4 py-2.5 text-sm text-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-dark mb-1.5 tracking-wide">Phone Number <span class="text-red-500">*</span></label>
+                  <input
+                    x-model="form.phone"
+                    type="tel" required
+                    placeholder="+234 800 000 0000"
+                    class="w-full border border-gray-200 rounded-md px-4 py-2.5 text-sm text-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-dark mb-1.5 tracking-wide">Email Address</label>
+                <input
+                  x-model="form.email"
+                  type="email"
+                  placeholder="you@example.com"
+                  class="w-full border border-gray-200 rounded-md px-4 py-2.5 text-sm text-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-dark mb-1.5 tracking-wide">Service of Interest <span class="text-red-500">*</span></label>
+                <select
+                  x-model="form.service"
+                  required
+                  class="w-full border border-gray-200 rounded-md px-4 py-2.5 text-sm text-dark focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors bg-white"
+                >
+                  <option value="" disabled selected>Select a specialty...</option>
+                  <option>General Surgery</option>
+                  <option>Surgical Oncology</option>
+                  <option>Gastro-Intestinal Diseases</option>
+                  <option>Colo-Rectal Diseases</option>
+                  <option>Ano-Rectal Surgeries</option>
+                  <option>Liver &amp; Biliary Tract Diseases</option>
+                  <option>Pancreatic Surgeries</option>
+                  <option>Urology &amp; Prostate Surgery</option>
+                  <option>Paediatric Surgery</option>
+                  <option>Oral-Maxillofacial Surgery</option>
+                  <option>ENT (Ear, Nose &amp; Throat)</option>
+                  <option>Brain / Neurosurgery</option>
+                  <option>Accidents &amp; Emergencies</option>
+                  <option>Gynaecological Surgeries</option>
+                  <option>Ophthalmology &amp; Eye Care</option>
+                  <option>Dermatology &amp; Beauty Skin Care</option>
+                  <option>Plastic &amp; Reconstructive Surgery</option>
+                  <option>Anaesthesia &amp; Intensive Care</option>
+                  <option>Radio/Medical Oncology</option>
+                  <option>Ante-Natal Care &amp; Obstetric Surgery</option>
+                  <option>Trauma &amp; Orthopaedic Surgery</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-dark mb-1.5 tracking-wide">Preferred Appointment Date</label>
+                <input
+                  x-model="form.date"
+                  type="date"
+                  class="w-full border border-gray-200 rounded-md px-4 py-2.5 text-sm text-dark focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-dark mb-1.5 tracking-wide">Message</label>
+                <textarea
+                  x-model="form.message"
+                  rows="4"
+                  placeholder="Briefly describe your condition or the reason for your visit..."
+                  class="w-full border border-gray-200 rounded-md px-4 py-2.5 text-sm text-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                :disabled="loading"
+                class="w-full bg-primary hover:bg-slate2 text-white font-semibold py-3.5 rounded-md transition-colors text-sm flex items-center justify-center gap-2"
+              >
+                <svg x-show="loading" class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                <span x-text="loading ? 'Sending...' : 'Send Message'"></span>
+              </button>
+
+              <p class="text-center text-xs text-muted pt-1">
+                For the fastest response, contact us directly on
+                <a href="https://wa.me/2348032161331" target="_blank" rel="noopener noreferrer" class="text-accent font-medium hover:underline">WhatsApp</a>.
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <!-- LOCATION INFO -->
+        <div data-aos="fade-left">
+          <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Find Us</p>
+          <h2 class="font-heading font-extrabold text-primary text-2xl lg:text-3xl mb-6 leading-tight">Our Location</h2>
+
+          <div class="space-y-5 mb-8">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-white rounded-md border border-gray-100 flex items-center justify-center shadow-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-dark text-sm mb-0.5">Address</p>
+                <p class="text-muted text-sm leading-relaxed">40B Country Home Motel Road (CHMR),<br/>Ward 36A, Oredo, Benin City, Edo State, Nigeria</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-white rounded-md border border-gray-100 flex items-center justify-center shadow-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-dark text-sm mb-0.5">Phone</p>
+                <a href="tel:+2348032161331" class="block text-muted text-sm hover:text-accent transition-colors">+234-803-216-1331 (Enquiries)</a>
+                <a href="tel:+2348074278057" class="block text-[#B91C1C] text-sm font-medium hover:text-red-700 transition-colors">+234-807-427-8057 (Emergency)</a>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-white rounded-md border border-gray-100 flex items-center justify-center shadow-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-dark text-sm mb-0.5">Email</p>
+                <a href="mailto:citisurgeons@gmail.com" class="text-muted text-sm hover:text-accent transition-colors">citisurgeons@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-white rounded-md border border-gray-100 flex items-center justify-center shadow-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-dark text-sm mb-0.5">Website</p>
+                <a href="http://www.citisurgeons.com.ng" target="_blank" rel="noopener noreferrer" class="text-muted text-sm hover:text-accent transition-colors">www.citisurgeons.com.ng</a>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-white rounded-md border border-gray-100 flex items-center justify-center shadow-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-dark text-sm mb-0.5">Visiting Hours</p>
+                <p class="text-muted text-sm">Mon – Sat: 8:00 AM – 6:00 PM</p>
+                <p class="text-muted text-sm">Emergency: 24 hours / 7 days</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+            <iframe
+              src="https://maps.google.com/maps?q=Ugbor,+Benin+City,+Edo+State,+Nigeria&output=embed"
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Citi Surgeons Hospital Location"
+            ></iframe>
+          </div>
+          <a
+            href="https://www.google.com/maps/search/Ugbor,+Benin+City,+Edo+State,+Nigeria"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 mt-3 text-sm font-semibold text-accent hover:underline"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Open in Google Maps
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EMERGENCY STRIP -->
+  <section class="bg-[#B91C1C] py-5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div class="flex items-center gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <p class="text-white font-semibold text-sm">Surgical Emergency? Our team is available 24 hours a day, 7 days a week.</p>
+        </div>
+        <a href="tel:+2348074278057" class="flex-shrink-0 inline-flex items-center gap-2 bg-white text-[#B91C1C] font-bold px-5 py-2 rounded-md text-sm hover:bg-red-50 transition-colors">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/>
+          </svg>
+          Call Emergency Line
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 bg-accent/20 rounded-md flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block font-heading font-bold text-white text-base leading-none">Citi Surgeons</span>
+              <span class="block text-[10px] tracking-widest uppercase text-white/40">Hospital</span>
+            </div>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed mb-5">Tertiary surgical healthcare serving Benin City and the South-South region since 1969.</p>
+          <a href="https://wa.me/2348032161331" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/30 text-[#25D366] text-sm font-medium px-4 py-2 rounded-md transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Quick Links</h5>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="text-white/50 hover:text-accent text-sm transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-white/50 hover:text-accent text-sm transition-colors">About Us</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Our Services</a></li>
+            <li><a href="team.html" class="text-white/50 hover:text-accent text-sm transition-colors">Our Team</a></li>
+            <li><a href="contact.html" class="text-accent text-sm">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Key Specialties</h5>
+          <ul class="space-y-2.5">
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">General Surgery</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Surgical Oncology</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Neurosurgery</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Urology &amp; Prostate</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Paediatric Surgery</a></li>
+            <li><a href="services.html" class="text-[#B91C1C] hover:text-red-400 text-sm transition-colors font-medium">Accidents &amp; Emergencies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Contact</h5>
+          <div class="space-y-4">
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p class="text-white/50 text-sm leading-relaxed">40B Country Home Motel Road, Ward 36A, Oredo, Benin City, Edo State</p>
+            </div>
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/></svg>
+              <div>
+                <a href="tel:+2348032161331" class="block text-white/50 hover:text-white text-sm transition-colors">+234-803-216-1331</a>
+                <a href="tel:+2348074278057" class="block text-[#B91C1C] hover:text-red-400 text-sm transition-colors">+234-807-427-8057 (Emergency)</a>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:citisurgeons@gmail.com" class="text-white/50 hover:text-accent text-sm transition-colors">citisurgeons@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white/30 text-xs">&copy; 2025 Citi Surgeons Hospital. All rights reserved.</p>
+        <p class="text-white/20 text-xs">40B Country Home Motel Road, Ward 36A, Oredo, Benin City, Edo State, Nigeria</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <div class="wa-float fixed bottom-6 right-6 z-50">
+    <a
+      href="https://wa.me/2348032161331"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-xl hover:scale-105 transition-transform"
+      aria-label="Chat on WhatsApp"
+      title="Chat with AI Receptionist 🤖"
+    >
+      <span class="wa-ping absolute inset-0 rounded-full bg-[#25D366] opacity-50"></span>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+    </a>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 600, once: true, offset: 60 });
+  </script>
+</body>
+</html>

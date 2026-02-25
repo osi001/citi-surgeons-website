@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Citi Surgeons Hospital | A Legacy Since 1969</title>
+  <meta name="description" content="Learn about Citi Surgeons Hospital's history since 1969, our Medical Director Prof. Moses I. Momoh, our mission, vision and location in Benin City." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D2B5E',
+            slate2: '#1E3A5F',
+            accent: '#2E6DA4',
+            navy: '#060F1E',
+            tint: '#F4F7FB',
+            dark: '#0F1923',
+            muted: '#5A6A7A'
+          },
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; color: #0F1923; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .hero-grid {
+      background-image: linear-gradient(rgba(46,109,164,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(46,109,164,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    @keyframes ping { 75%,100%{transform:scale(2);opacity:0;} }
+    .wa-ping { animation: ping 1.8s cubic-bezier(0,0,0.2,1) infinite; }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+    .wa-float { animation: fadeInUp 0.5s ease 2s both; }
+    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 32px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #2E6DA4, #0D2B5E20);
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- NAVBAR -->
+  <nav
+    x-data="{ scrolled: false, open: false }"
+    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 40 })"
+    :class="scrolled ? 'bg-white/95 nav-blur shadow-md' : 'bg-white shadow-sm'"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <div class="w-9 h-9 bg-primary rounded-md flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block font-heading font-bold text-primary text-base leading-none">Citi Surgeons</span>
+            <span class="block text-[10px] font-medium tracking-widest uppercase text-muted">Hospital</span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">Home</a>
+          <a href="about.html" class="px-4 py-2 text-sm font-medium text-accent border-b-2 border-accent">About</a>
+          <a href="services.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">Services</a>
+          <a href="team.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">Our Team</a>
+          <a href="contact.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">Contact</a>
+        </div>
+
+        <div class="hidden lg:flex">
+          <a href="contact.html" class="bg-primary hover:bg-slate2 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors">
+            Book Appointment
+          </a>
+        </div>
+
+        <button @click="open = !open" class="lg:hidden p-2 rounded-md text-dark hover:bg-gray-100">
+          <svg x-show="!open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg x-show="open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div x-show="open" x-transition class="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+      <div class="px-4 py-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Home</a>
+        <a href="about.html" class="block px-3 py-2.5 text-sm font-medium text-accent border-l-2 border-accent bg-tint rounded-r-md">About</a>
+        <a href="services.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Services</a>
+        <a href="team.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Our Team</a>
+        <a href="contact.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Contact</a>
+        <a href="contact.html" class="block mt-3 bg-primary text-white text-sm font-semibold px-4 py-3 rounded-md text-center">Book Appointment</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="relative pt-16 overflow-hidden" style="min-height: 45vh;">
+    <!-- Banner image background -->
+    <div class="absolute inset-0">
+      <img src="hospital banner.jpeg" alt="Citi Surgeons Hospital building" class="w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-[#060F1E]/75"></div>
+    </div>
+    <div class="absolute top-0 left-0 right-0 h-0.5 bg-accent opacity-70"></div>
+    <div class="absolute inset-0 hero-grid"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col justify-center" style="min-height: 45vh;">
+      <nav class="mb-6" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-white/40 font-medium">
+          <li><a href="index.html" class="hover:text-white/70 transition-colors">Home</a></li>
+          <li><span class="text-white/20">/</span></li>
+          <li class="text-white/60">About</li>
+        </ol>
+      </nav>
+      <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Our Story</p>
+      <h1 class="font-heading font-extrabold text-white text-3xl lg:text-5xl mb-4 leading-tight">About Us</h1>
+      <p class="text-[#A8BFD0] text-lg max-w-xl leading-relaxed">A Legacy of Surgical Excellence Since 1969</p>
+    </div>
+  </section>
+
+  <!-- OUR JOURNEY TIMELINE -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">History</p>
+        <h2 class="font-heading font-extrabold text-primary text-3xl lg:text-4xl">Our Journey</h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <!-- Timeline Item 1 -->
+        <div class="relative flex gap-8 pb-12 timeline-line" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex-shrink-0 relative z-10">
+            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center shadow-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pb-4">
+            <div class="inline-block bg-tint border border-gray-200 px-3 py-1 rounded mb-3">
+              <span class="text-xs font-bold tracking-widest uppercase text-accent">1969</span>
+            </div>
+            <h3 class="font-heading font-bold text-dark text-xl mb-2">Founded in New Benin</h3>
+            <p class="text-muted text-base leading-relaxed">
+              Citi Surgeons Hospital was established in New Benin, Benin City, and formally registered with the Edo State Ministry of Health. The facility began as a dedicated surgical practice committed to bringing high-quality care to the people of Edo State and the broader South-South region.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative flex gap-8 pb-12 timeline-line" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex-shrink-0 relative z-10">
+            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pb-4">
+            <div class="inline-block bg-tint border border-gray-200 px-3 py-1 rounded mb-3">
+              <span class="text-xs font-bold tracking-widest uppercase text-accent">2023</span>
+            </div>
+            <h3 class="font-heading font-bold text-dark text-xl mb-2">Relocation &amp; Expansion — Citi Surgeons Established</h3>
+            <p class="text-muted text-base leading-relaxed">
+              The hospital relocated to its current purpose-built premises at 40B Country Home Motel Road, Ugbor, Benin City — formally established as a fully-equipped tertiary surgical healthcare facility. The new facility features modern operating theatres, an intensive care unit, full diagnostic imaging, endoscopy suites, and a post-anaesthetic care unit. Under the leadership of Prof. Moses I. Momoh, 21+ surgical specialties are now offered under one roof.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="relative flex gap-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex-shrink-0 relative z-10">
+            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center shadow-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="inline-block bg-tint border border-gray-200 px-3 py-1 rounded mb-3">
+              <span class="text-xs font-bold tracking-widest uppercase text-accent">Today</span>
+            </div>
+            <h3 class="font-heading font-bold text-dark text-xl mb-2">Serving the South-South Region</h3>
+            <p class="text-muted text-base leading-relaxed">
+              Today, Citi Surgeons serves Benin City and the broader South-South region with 21+ surgical specialties, a team of 15+ senior consultants and professors, 24/7 Accidents &amp; Emergencies, and a commitment to both clinical excellence and the training of the next generation of Nigerian surgeons.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER PROFILE -->
+  <section class="py-24 bg-tint">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Leadership</p>
+        <h2 class="font-heading font-extrabold text-primary text-3xl lg:text-4xl">Our Medical Director</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-14 items-start">
+        <!-- Left: Image -->
+        <div class="flex justify-center lg:justify-start" data-aos="fade-right">
+          <div class="relative">
+            <img
+              src="ProfM .jpeg"
+              alt="Prof. Moses I. Momoh — Medical Director, Citi Surgeons Hospital"
+              class="rounded-lg shadow-xl w-full max-w-sm object-cover"
+            />
+            <div class="absolute -bottom-4 -right-4 bg-accent text-white rounded-lg px-5 py-3 shadow-lg">
+              <div class="text-lg font-heading font-extrabold">55+</div>
+              <div class="text-xs text-white/70 font-medium">Years Experience</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Details -->
+        <div data-aos="fade-left">
+          <h3 class="font-heading font-extrabold text-primary text-3xl mb-1">Prof. Moses I. Momoh</h3>
+          <p class="text-accent font-semibold text-base mb-4">Medical Director | Professor of Surgery</p>
+
+          <!-- Credential badges -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-xs font-semibold tracking-wider uppercase text-primary border border-primary/30 bg-white px-3 py-1 rounded">FWACS</span>
+            <span class="text-xs font-semibold tracking-wider uppercase text-primary border border-primary/30 bg-white px-3 py-1 rounded">FICS</span>
+            <span class="text-xs font-semibold tracking-wider uppercase text-primary border border-primary/30 bg-white px-3 py-1 rounded">Professor of Surgery</span>
+            <span class="text-xs font-semibold tracking-wider uppercase text-primary border border-primary/30 bg-white px-3 py-1 rounded">University of Benin</span>
+          </div>
+
+          <p class="text-muted text-base leading-relaxed mb-8">
+            Prof. Moses I. Momoh is one of Nigeria's most distinguished surgeons — a Fellow of the West African College of Surgeons, a Fellow of the International College of Surgeons, and a Professor of Surgery at the University of Benin. Over a career spanning more than five decades, he has combined outstanding clinical practice with academic leadership, policy-making, and the training of generations of Nigerian surgical professionals.
+          </p>
+
+          <!-- Career Timeline -->
+          <h4 class="font-heading font-bold text-dark text-base mb-5 tracking-wide uppercase text-xs" style="letter-spacing: 0.1em;">Career Milestones</h4>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">1979</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pb-4 pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">MB:BS, University of Benin</p>
+                <p class="text-muted text-xs mt-0.5">Undergraduate medical training</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">1993</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pb-4 pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">FWACS Fellowship</p>
+                <p class="text-muted text-xs mt-0.5">Lecturer and Consultant Surgeon, University of Benin Teaching Hospital (UBTH)</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">1994</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pb-4 pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">1st Member, Edo State Hospitals Management Board</p>
+                <p class="text-muted text-xs mt-0.5">Inaugural board appointment in healthcare governance</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">1998–2003</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pb-4 pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">Director of Clinical Services &amp; Training, UBTH</p>
+                <p class="text-muted text-xs mt-0.5">Led clinical operations at one of Nigeria's foremost teaching hospitals</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">2009–2011</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pb-4 pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">Honourable Commissioner of Health, Edo State</p>
+                <p class="text-muted text-xs mt-0.5">Served as state health minister, driving healthcare policy and reform</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">2010</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pb-4 pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">Professor of Surgery, University of Benin</p>
+                <p class="text-muted text-xs mt-0.5">Appointed to full professorship at the College of Medical Sciences</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">2014–2018</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pb-4 pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">Dean, School of Medicine, University of Benin</p>
+                <p class="text-muted text-xs mt-0.5">Led the Faculty of Medicine through academic transformation</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-20 text-right">
+                <span class="text-xs font-bold text-accent font-heading">2019–2023</span>
+              </div>
+              <div class="flex-shrink-0 w-px bg-gray-200 relative">
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent"></div>
+              </div>
+              <div class="pl-3">
+                <p class="text-dark text-sm font-semibold font-heading">Board Member, National Bureau of Statistics (South-South)</p>
+                <p class="text-muted text-xs mt-0.5">Appointed by President Muhammadu Buhari as South-South representative</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+      <blockquote class="border-l-4 border-accent pl-8 py-4">
+        <p class="font-heading italic text-primary text-2xl lg:text-3xl leading-relaxed font-semibold mb-5">
+          "Teaching and performing surgeries gave Prof. Moses Momoh immense pleasure, fulfilment and gratification."
+        </p>
+        <footer class="flex items-center gap-3">
+          <div class="w-8 h-px bg-accent"></div>
+          <cite class="text-muted text-sm font-medium not-italic">Prof. Moses I. Momoh — Medical Director, Citi Surgeons Hospital</cite>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- MISSION & VISION -->
+  <section class="py-24 bg-tint">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Our Purpose</p>
+        <h2 class="font-heading font-extrabold text-primary text-3xl lg:text-4xl">Mission &amp; Vision</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="bg-white border border-gray-100 border-l-4 border-l-accent rounded-lg p-10 shadow-sm" data-aos="fade-right">
+          <div class="inline-block mb-5">
+            <span class="text-xs font-semibold tracking-widest uppercase text-accent">Our Mission</span>
+          </div>
+          <h3 class="font-heading font-bold text-primary text-2xl mb-4">To Heal. To Teach. To Lead.</h3>
+          <p class="text-muted leading-relaxed text-base">
+            To provide accessible, high-quality tertiary surgical healthcare to the people of Benin City and the South-South region of Nigeria — combining clinical excellence, compassionate patient care, and continuous medical education.
+          </p>
+        </div>
+        <div class="bg-white border border-gray-100 border-l-4 border-l-primary rounded-lg p-10 shadow-sm" data-aos="fade-left">
+          <div class="inline-block mb-5">
+            <span class="text-xs font-semibold tracking-widest uppercase text-accent">Our Vision</span>
+          </div>
+          <h3 class="font-heading font-bold text-primary text-2xl mb-4">A Centre of Surgical Excellence</h3>
+          <p class="text-muted leading-relaxed text-base">
+            To become the foremost tertiary surgical institution in Nigeria's South-South zone — recognised for clinical outcomes, training of the next generation of surgeons, and the relentless pursuit of patient welfare above all else.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION SECTION -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Find Us</p>
+        <h2 class="font-heading font-extrabold text-primary text-3xl lg:text-4xl">Our Location</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Address & Contact -->
+        <div data-aos="fade-right">
+          <div class="space-y-6">
+            <div class="flex gap-4 p-5 border border-gray-100 rounded-lg hover:border-accent/30 transition-colors">
+              <div class="flex-shrink-0 w-10 h-10 bg-tint rounded-md flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold text-dark text-base mb-1">Address</h4>
+                <p class="text-muted text-sm leading-relaxed">40B Country Home Motel Road,<br />Ward 36A, Oredo, Benin City,<br />Edo State, Nigeria</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 p-5 border border-gray-100 rounded-lg hover:border-accent/30 transition-colors">
+              <div class="flex-shrink-0 w-10 h-10 bg-tint rounded-md flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold text-dark text-base mb-1">Phone</h4>
+                <a href="tel:+2348032161331" class="block text-accent text-sm hover:underline mb-1">+234-803-216-1331</a>
+                <a href="tel:+2348074278057" class="block text-[#B91C1C] font-semibold text-sm hover:underline">+234-807-427-8057 (Emergency — 24/7)</a>
+              </div>
+            </div>
+
+            <div class="flex gap-4 p-5 border border-gray-100 rounded-lg hover:border-accent/30 transition-colors">
+              <div class="flex-shrink-0 w-10 h-10 bg-tint rounded-md flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold text-dark text-base mb-1">Email</h4>
+                <a href="mailto:citisurgeons@gmail.com" class="text-accent text-sm hover:underline">citisurgeons@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="flex gap-4 p-5 border border-gray-100 rounded-lg hover:border-accent/30 transition-colors">
+              <div class="flex-shrink-0 w-10 h-10 bg-tint rounded-md flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h4 class="font-heading font-semibold text-dark text-base mb-1">Hours</h4>
+                <p class="text-muted text-sm leading-relaxed">Outpatient: Mon–Fri, 8:00am–5:00pm<br />Emergencies: 24 hours, 7 days a week</p>
+              </div>
+            </div>
+
+            <a
+              href="https://wa.me/2348032161331"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold px-6 py-3.5 rounded-md transition-colors w-full justify-center shadow-sm"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              Get Directions via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Map -->
+        <div data-aos="fade-left">
+          <iframe
+            src="https://maps.google.com/maps?q=Ugbor,+Benin+City,+Nigeria&output=embed"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            class="rounded-lg w-full shadow-sm border border-gray-100"
+            title="Citi Surgeons Hospital Location"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 bg-accent/20 rounded-md flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block font-heading font-bold text-white text-base leading-none">Citi Surgeons</span>
+              <span class="block text-[10px] tracking-widest uppercase text-white/40">Hospital</span>
+            </div>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed mb-5">Tertiary surgical healthcare serving Benin City and the South-South region since 1969.</p>
+          <a href="https://wa.me/2348032161331" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/30 text-[#25D366] text-sm font-medium px-4 py-2 rounded-md transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Quick Links</h5>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="text-white/50 hover:text-accent text-sm transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-white/50 hover:text-accent text-sm transition-colors">About Us</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Our Services</a></li>
+            <li><a href="team.html" class="text-white/50 hover:text-accent text-sm transition-colors">Our Team</a></li>
+            <li><a href="contact.html" class="text-white/50 hover:text-accent text-sm transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Key Specialties</h5>
+          <ul class="space-y-2.5">
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">General Surgery</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Surgical Oncology</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Neurosurgery</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Urology & Prostate</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Paediatric Surgery</a></li>
+            <li><a href="services.html" class="text-[#B91C1C] hover:text-red-400 text-sm transition-colors font-medium">Accidents & Emergencies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Contact</h5>
+          <div class="space-y-4">
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p class="text-white/50 text-sm leading-relaxed">40B Country Home Motel Road, Ward 36A, Oredo, Benin City, Edo State</p>
+            </div>
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/></svg>
+              <div>
+                <a href="tel:+2348032161331" class="block text-white/50 hover:text-white text-sm transition-colors">+234-803-216-1331</a>
+                <a href="tel:+2348074278057" class="block text-[#B91C1C] hover:text-red-400 text-sm transition-colors">+234-807-427-8057 (Emergency)</a>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:citisurgeons@gmail.com" class="text-white/50 hover:text-accent text-sm transition-colors">citisurgeons@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white/30 text-xs">&copy; 2024 Citi Surgeons Hospital. All rights reserved.</p>
+        <p class="text-white/20 text-xs">40B Country Home Motel Road, Ward 36A, Oredo, Benin City, Edo State, Nigeria</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <div class="wa-float fixed bottom-6 right-6 z-50">
+    <a
+      href="https://wa.me/2348032161331"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-xl hover:scale-110 transition-transform"
+      aria-label="Chat on WhatsApp"
+    >
+      <span class="wa-ping absolute inset-0 rounded-full bg-[#25D366] opacity-50"></span>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+    </a>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 600, once: true, offset: 60 });
+  </script>
+</body>
+</html>

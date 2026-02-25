@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team — Citi Surgeons Hospital | Senior Consultants & Professors</title>
+  <meta name="description" content="Meet the senior consultants, surgeons, anaesthetists and specialists at Citi Surgeons Hospital — led by Prof. Moses I. Momoh, FWACS, FICS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D2B5E',
+            slate2: '#1E3A5F',
+            accent: '#2E6DA4',
+            navy: '#060F1E',
+            tint: '#F4F7FB',
+            dark: '#0F1923',
+            muted: '#5A6A7A'
+          },
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; color: #0F1923; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .hero-grid {
+      background-image: linear-gradient(rgba(46,109,164,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(46,109,164,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    @keyframes ping { 75%,100%{transform:scale(2);opacity:0;} }
+    .wa-ping { animation: ping 1.8s cubic-bezier(0,0,0.2,1) infinite; }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+    .wa-float { animation: fadeInUp 0.5s ease 2s both; }
+    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- NAVBAR -->
+  <nav
+    x-data="{ scrolled: false, open: false }"
+    x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 40 })"
+    :class="scrolled ? 'bg-white/95 nav-blur shadow-md' : 'bg-white shadow-sm'"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <div class="w-9 h-9 bg-primary rounded-md flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block font-heading font-bold text-primary text-base leading-none">Citi Surgeons</span>
+            <span class="block text-[10px] font-medium tracking-widest uppercase text-muted">Hospital</span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">Home</a>
+          <a href="about.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">About</a>
+          <a href="services.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">Services</a>
+          <a href="team.html" class="px-4 py-2 text-sm font-medium text-accent border-b-2 border-accent">Our Team</a>
+          <a href="contact.html" class="px-4 py-2 text-sm font-medium text-dark hover:text-accent transition-colors">Contact</a>
+        </div>
+
+        <div class="hidden lg:flex">
+          <a href="contact.html" class="bg-primary hover:bg-slate2 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors">
+            Book Appointment
+          </a>
+        </div>
+
+        <button @click="open = !open" class="lg:hidden p-2 rounded-md text-dark hover:bg-gray-100">
+          <svg x-show="!open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg x-show="open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div x-show="open" x-transition class="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+      <div class="px-4 py-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Home</a>
+        <a href="about.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">About</a>
+        <a href="services.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Services</a>
+        <a href="team.html" class="block px-3 py-2.5 text-sm font-medium text-accent border-l-2 border-accent bg-tint rounded-r-md">Our Team</a>
+        <a href="contact.html" class="block px-3 py-2.5 text-sm font-medium text-dark hover:text-accent">Contact</a>
+        <a href="contact.html" class="block mt-3 bg-primary text-white text-sm font-semibold px-4 py-3 rounded-md text-center">Book Appointment</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="relative bg-primary pt-16 overflow-hidden" style="min-height: 40vh;">
+    <div class="absolute top-0 left-0 right-0 h-0.5 bg-accent opacity-70"></div>
+    <div class="absolute inset-0 hero-grid"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col justify-center" style="min-height: 40vh;">
+      <nav class="mb-6" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-white/40 font-medium">
+          <li><a href="index.html" class="hover:text-white/70 transition-colors">Home</a></li>
+          <li><span class="text-white/20">/</span></li>
+          <li class="text-white/60">Our Team</li>
+        </ol>
+      </nav>
+      <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">The People Behind Your Care</p>
+      <h1 class="font-heading font-extrabold text-white text-3xl lg:text-5xl mb-4 leading-tight">Our Team</h1>
+      <p class="text-[#A8BFD0] text-lg max-w-xl leading-relaxed">Senior Consultants &amp; Professors Dedicated to Your Care</p>
+    </div>
+  </section>
+
+  <!-- TEAM GRID WITH ALPINE TABS -->
+  <section
+    class="py-24 bg-white"
+    x-data="{
+      activeTab: 'All',
+      tabs: ['All', 'Surgeons', 'Anaesthetists', 'Specialists'],
+      team: [
+        {name:'Prof. Moses I. Momoh', quals:'MBBS, FWACS, FICS', role:'General & Hepatobiliary Surgery', cat:'Surgeons', img:'ProfM .jpeg', director:true},
+        {name:'Dr. Felix Akinbami', quals:'MBBS, FWACS', role:'Plastic & Reconstructive Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/1E3A5F/FFFFFF?text=Dr.+Akinbami', director:false},
+        {name:'Dr. Godfrey Obi', quals:'MBBS, FWACS', role:'ENT Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/0D2B5E/FFFFFF?text=Dr.+Obi', director:false},
+        {name:'Dr. Victor Momoh', quals:'MBBS, FWACS', role:'Neurosurgery / Spine Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/1E3A5F/FFFFFF?text=Dr.+V.+Momoh', director:false},
+        {name:'Dr. Emmanuel Osaghae', quals:'MBBS, FWACS', role:'Gynaecological Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/0D2B5E/FFFFFF?text=Dr.+Osaghae', director:false},
+        {name:'Dr. Olawale Adesuyi', quals:'MBBS, FWACS', role:'Urology & Prostate Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/1E3A5F/FFFFFF?text=Dr.+Adesuyi', director:false},
+        {name:'Dr. Ndukaife Nwachukwu', quals:'MBBS, FWACS', role:'General Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/0D2B5E/FFFFFF?text=Dr.+Nwachukwu', director:false},
+        {name:'Dr. Olabode Akinniranye', quals:'MBBS, FWACS', role:'Surgical Oncology & Colorectal', cat:'Surgeons', img:'https://placehold.co/300x300/1E3A5F/FFFFFF?text=Dr.+Akinniranye', director:false},
+        {name:'Dr. Chukwuemeka Anikwe', quals:'MBBS, FWACS', role:'Obstetric & Gynaecological Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/0D2B5E/FFFFFF?text=Dr.+Anikwe', director:false},
+        {name:'Dr. Olaitan Aworanti', quals:'MBBS, FWACS', role:'Paediatric Surgery', cat:'Surgeons', img:'https://placehold.co/300x300/1E3A5F/FFFFFF?text=Dr.+Aworanti', director:false},
+        {name:'Dr. Sunny Ogor', quals:'MBBS, FWACS', role:'Ophthalmic Surgery', cat:'Specialists', img:'https://placehold.co/300x300/0D2B5E/FFFFFF?text=Dr.+Ogor', director:false},
+        {name:'Dr. Ufuoma Ogbe', quals:'MBBS, FMCOphth', role:'Ophthalmology', cat:'Specialists', img:'https://placehold.co/300x300/1E3A5F/FFFFFF?text=Dr.+Ogbe', director:false},
+        {name:'Dr. Godwin Obaseki', quals:'MBBS, FMCA', role:'Anaesthesia & Intensive Care', cat:'Anaesthetists', img:'https://placehold.co/300x300/0D2B5E/FFFFFF?text=Dr.+Obaseki', director:false},
+        {name:'Dr. Tunde Ojo', quals:'MBBS, FMCA', role:'Anaesthesia', cat:'Anaesthetists', img:'https://placehold.co/300x300/1E3A5F/FFFFFF?text=Dr.+Ojo', director:false},
+        {name:'Dr. Olanrewaju Babatunde', quals:'MBBS, FMCA', role:'Anaesthesia & Intensive Care', cat:'Anaesthetists', img:'https://placehold.co/300x300/0D2B5E/FFFFFF?text=Dr.+Babatunde', director:false}
+      ],
+      get filtered() { return this.activeTab === 'All' ? this.team : this.team.filter(m => m.cat === this.activeTab); }
+    }"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section header -->
+      <div class="text-center mb-10" data-aos="fade-up">
+        <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Our Consultants</p>
+        <h2 class="font-heading font-extrabold text-primary text-3xl lg:text-4xl mb-4">Meet the Team</h2>
+        <p class="text-muted max-w-xl mx-auto text-base leading-relaxed">
+          Every member of our surgical team holds recognised fellowship qualifications and brings deep specialist expertise to your care.
+        </p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex items-center gap-0 border-b border-gray-200 mb-12 overflow-x-auto">
+        <template x-for="tab in tabs" :key="tab">
+          <button
+            @click="activeTab = tab"
+            :class="activeTab === tab
+              ? 'border-b-2 border-primary text-primary font-semibold'
+              : 'text-muted hover:text-primary border-b-2 border-transparent'"
+            class="px-6 py-3 text-sm font-medium whitespace-nowrap transition-colors"
+            x-text="tab"
+          ></button>
+        </template>
+      </div>
+
+      <!-- Team Cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <template x-for="member in filtered" :key="member.name">
+          <div
+            :class="member.director ? 'border-accent/40 ring-1 ring-accent/20' : 'border-gray-100'"
+            class="bg-white rounded-lg border shadow-sm hover:shadow-md hover:border-accent/30 transition-all group overflow-hidden"
+          >
+            <!-- Image -->
+            <div class="aspect-square overflow-hidden bg-tint">
+              <img
+                :src="member.img"
+                :alt="member.name"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            <!-- Info -->
+            <div class="p-5">
+              <!-- Director badge -->
+              <template x-if="member.director">
+                <div class="mb-2">
+                  <span class="text-[10px] font-bold tracking-widest uppercase text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">Medical Director</span>
+                </div>
+              </template>
+
+              <h3 class="font-heading font-bold text-dark text-base mb-0.5" x-text="member.name"></h3>
+              <p class="text-muted text-xs mb-1" x-text="member.quals"></p>
+              <p class="text-accent text-sm font-medium mb-3" x-text="member.role"></p>
+
+              <!-- Category tag -->
+              <span
+                :class="{
+                  'text-primary border-primary/30 bg-primary/5': member.cat === 'Surgeons',
+                  'text-accent border-accent/30 bg-accent/5': member.cat === 'Specialists',
+                  'text-slate2 border-slate2/30 bg-slate2/5': member.cat === 'Anaesthetists'
+                }"
+                class="inline-block text-[10px] font-semibold tracking-widest uppercase border px-2 py-0.5 rounded"
+                x-text="member.cat === 'Surgeons' ? 'Surgeon' : member.cat === 'Anaesthetists' ? 'Anaesthetist' : 'Specialist'"
+              ></span>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- NURSING STAFF BANNER -->
+  <section class="py-20 bg-tint">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Text -->
+        <div data-aos="fade-right">
+          <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Support Staff</p>
+          <h2 class="font-heading font-extrabold text-primary text-3xl lg:text-4xl mb-5 leading-tight">
+            Expert Nursing Support
+          </h2>
+          <p class="text-muted text-base leading-relaxed mb-6">
+            Behind every successful surgical outcome is a team of highly trained nursing professionals. Citi Surgeons Hospital is supported by post-basic trained perioperative nurses across all speciality units — bringing precision, empathy, and clinical excellence to every patient encounter.
+          </p>
+          <p class="text-muted text-base leading-relaxed mb-8">
+            Our nursing staff hold post-basic qualifications in their respective fields and work closely with our consultant surgeons to ensure that pre-operative, intra-operative, and post-operative care meets the highest standards.
+          </p>
+
+          <!-- Feature pills -->
+          <div class="flex flex-wrap gap-3">
+            <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></div>
+              <span class="text-dark text-sm font-semibold font-heading">Peri-Operative Theatre</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></div>
+              <span class="text-dark text-sm font-semibold font-heading">Ophthalmic Nursing</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></div>
+              <span class="text-dark text-sm font-semibold font-heading">ENT Nursing</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
+              <div class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></div>
+              <span class="text-dark text-sm font-semibold font-heading">Endoscopy Unit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Stat cards -->
+        <div class="grid grid-cols-2 gap-5" data-aos="fade-left">
+          <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm text-center">
+            <div class="w-12 h-12 bg-tint rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="text-2xl font-heading font-extrabold text-primary mb-1">Post-Basic</div>
+            <div class="text-muted text-xs font-medium uppercase tracking-wide">Qualified Nurses</div>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm text-center">
+            <div class="w-12 h-12 bg-tint rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="text-2xl font-heading font-extrabold text-primary mb-1">24/7</div>
+            <div class="text-muted text-xs font-medium uppercase tracking-wide">Nursing Coverage</div>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm text-center">
+            <div class="w-12 h-12 bg-tint rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <div class="text-2xl font-heading font-extrabold text-primary mb-1">4+</div>
+            <div class="text-muted text-xs font-medium uppercase tracking-wide">Specialist Units</div>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm text-center">
+            <div class="w-12 h-12 bg-tint rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D2B5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div class="text-2xl font-heading font-extrabold text-primary mb-1">Patient</div>
+            <div class="text-muted text-xs font-medium uppercase tracking-wide">Centred Approach</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="py-20 bg-primary relative overflow-hidden">
+    <div class="absolute inset-0 hero-grid opacity-60"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Ready to Consult?</p>
+      <h2 class="font-heading font-extrabold text-white text-3xl lg:text-4xl mb-5 leading-tight">
+        Book Your Appointment Today
+      </h2>
+      <p class="text-[#A8BFD0] text-base leading-relaxed mb-8">
+        Our consultants are available for scheduled appointments. Use WhatsApp to get connected with the right specialist quickly.
+      </p>
+      <a
+        href="https://wa.me/2348032161331"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold px-8 py-4 rounded-md transition-colors shadow-lg text-base"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Book via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 bg-accent/20 rounded-md flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block font-heading font-bold text-white text-base leading-none">Citi Surgeons</span>
+              <span class="block text-[10px] tracking-widest uppercase text-white/40">Hospital</span>
+            </div>
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed mb-5">Tertiary surgical healthcare serving Benin City and the South-South region since 1969.</p>
+          <a href="https://wa.me/2348032161331" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/30 text-[#25D366] text-sm font-medium px-4 py-2 rounded-md transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Quick Links</h5>
+          <ul class="space-y-2.5">
+            <li><a href="index.html" class="text-white/50 hover:text-accent text-sm transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-white/50 hover:text-accent text-sm transition-colors">About Us</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Our Services</a></li>
+            <li><a href="team.html" class="text-white/50 hover:text-accent text-sm transition-colors">Our Team</a></li>
+            <li><a href="contact.html" class="text-white/50 hover:text-accent text-sm transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Key Specialties</h5>
+          <ul class="space-y-2.5">
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">General Surgery</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Surgical Oncology</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Neurosurgery</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Urology & Prostate</a></li>
+            <li><a href="services.html" class="text-white/50 hover:text-accent text-sm transition-colors">Paediatric Surgery</a></li>
+            <li><a href="services.html" class="text-[#B91C1C] hover:text-red-400 text-sm transition-colors font-medium">Accidents & Emergencies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-heading font-semibold text-white text-sm mb-5 tracking-wide">Contact</h5>
+          <div class="space-y-4">
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p class="text-white/50 text-sm leading-relaxed">40B Country Home Motel Road, Ward 36A, Oredo, Benin City, Edo State</p>
+            </div>
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/></svg>
+              <div>
+                <a href="tel:+2348032161331" class="block text-white/50 hover:text-white text-sm transition-colors">+234-803-216-1331</a>
+                <a href="tel:+2348074278057" class="block text-[#B91C1C] hover:text-red-400 text-sm transition-colors">+234-807-427-8057 (Emergency)</a>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:citisurgeons@gmail.com" class="text-white/50 hover:text-accent text-sm transition-colors">citisurgeons@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white/30 text-xs">&copy; 2024 Citi Surgeons Hospital. All rights reserved.</p>
+        <p class="text-white/20 text-xs">40B Country Home Motel Road, Ward 36A, Oredo, Benin City, Edo State, Nigeria</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <div class="wa-float fixed bottom-6 right-6 z-50">
+    <a
+      href="https://wa.me/2348032161331"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-xl hover:scale-110 transition-transform"
+      aria-label="Chat on WhatsApp"
+    >
+      <span class="wa-ping absolute inset-0 rounded-full bg-[#25D366] opacity-50"></span>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+    </a>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 600, once: true, offset: 60 });
+  </script>
+</body>
+</html>
