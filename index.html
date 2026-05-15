@@ -33,6 +33,7 @@
     }
   </script>
   <style>
+    html, body { overflow-x: hidden; max-width: 100%; }
     body { font-family: 'DM Sans', sans-serif; color: #0F1923; }
     h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
     .hero-grid {
@@ -105,40 +106,129 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="relative min-h-screen flex flex-col justify-center bg-gradient-to-br from-[#0A1F45] via-primary to-[#1E3A5F] overflow-hidden">
-    <!-- Top accent line -->
-    <div class="absolute top-0 left-0 right-0 h-0.5 bg-accent opacity-70"></div>
-    <!-- Grid overlay -->
-    <div class="absolute inset-0 hero-grid opacity-100"></div>
-    <!-- Radial glow -->
-    <div class="absolute inset-0 bg-radial-gradient pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(46,109,164,0.12) 0%, transparent 70%);"></div>
+  <!-- HERO SLIDESHOW -->
+  <section
+    x-data="{
+      current: 0,
+      paused: false,
+      slides: [
+        {
+          img: 'operating-theatre.jpg',
+          badge: 'State-of-the-Art Surgical Theatres',
+          h1: 'Expert Surgical Care.<br>Exceptional <span class=\'text-accent\'>Outcomes.</span>',
+          sub: 'Since 1969, Citi Surgeons Hospital has provided world-class tertiary surgical care to patients across Benin City and the South-South region of Nigeria.',
+          pos: 'center', poster: false
+        },
+        {
+          img: 'nurse-patient.jpg',
+          badge: 'Compassionate Patient Care',
+          h1: 'Compassion at<br>Every <span class=\'text-accent\'>Bedside.</span>',
+          sub: 'From admission through recovery, our team treats every patient with the dignity, attention and warmth they deserve.',
+          pos: 'center', poster: false
+        },
+        {
+          img: 'consultant-desk.jpg',
+          badge: 'Professor-Led Specialist Team',
+          h1: 'Professor-Led.<br>Specialist-<span class=\'text-accent\'>Driven.</span>',
+          sub: 'Senior consultants with FWACS and FICS fellowships, university professorships, and decades of operating experience — all under one roof.',
+          pos: 'center', poster: false
+        },
+        {
+          img: 'hospital-building.jpg',
+          badge: 'Purpose-Built Tertiary Facility',
+          h1: 'A Centre Built<br>for <span class=\'text-accent\'>Healing.</span>',
+          sub: 'Modern operating theatres, intensive care, full diagnostics and 21+ surgical specialties — designed from the ground up around patient outcomes.',
+          pos: 'center', poster: false
+        },
+        { img: 'breast-screening-banner.png', badge: 'Community Initiative · BSHI Partnership', pos: 'center', poster: true }
+      ],
+      next() { this.current = (this.current + 1) % this.slides.length },
+      init() { setInterval(() => { if (!this.paused) this.next() }, 6000) }
+    }"
+    @mouseenter="paused = true"
+    @mouseleave="paused = false"
+    class="relative min-h-screen overflow-hidden bg-navy"
+  >
+    <!-- Slides -->
+    <template x-for="(slide, idx) in slides" :key="idx">
+      <div
+        class="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
+        :class="current === idx ? 'opacity-100' : 'opacity-0'"
+      >
+        <!-- Poster slide: soft pink backdrop + contained banner -->
+        <template x-if="slide.poster">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#fdf2f8] via-[#fce7f3] to-[#fbcfe8] flex items-center justify-center p-2 sm:p-4 lg:p-6">
+            <img :src="slide.img" :alt="slide.badge" class="w-full h-auto max-h-[94vh] object-contain rounded-xl shadow-2xl" />
+          </div>
+        </template>
+        <!-- Photo slide: full-bleed cover with left-weighted gradient -->
+        <template x-if="!slide.poster">
+          <div class="absolute inset-0">
+            <img :src="slide.img" :alt="slide.badge" class="w-full h-full object-cover" :style="`object-position: ${slide.pos};`" />
+            <div class="absolute inset-0 bg-gradient-to-r from-[#060F1E]/85 via-[#060F1E]/55 to-[#060F1E]/35"></div>
+          </div>
+        </template>
+      </div>
+    </template>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
+    <!-- Top accent line -->
+    <div class="absolute top-0 left-0 right-0 h-0.5 bg-accent opacity-70 z-10"></div>
+
+    <!-- Hero text overlay (hidden on poster slide) -->
+    <div
+      x-show="!slides[current].poster"
+      class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-32 min-h-screen flex flex-col justify-center"
+    >
       <div class="max-w-3xl">
-        <!-- Badge -->
+        <!-- Animated badge -->
         <div class="inline-flex items-center gap-3 mb-8">
           <div class="h-px w-8 bg-accent"></div>
-          <span class="text-xs font-semibold tracking-widest uppercase text-accent" style="font-variant: small-caps; letter-spacing: 0.15em;">
-            Tertiary Surgical Healthcare Facility
-          </span>
+          <template x-for="(slide, idx) in slides" :key="idx">
+            <span
+              x-show="current === idx && !slide.poster"
+              x-transition:enter="transition ease-out duration-700"
+              x-transition:enter-start="opacity-0 translate-y-2"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              class="text-xs font-semibold tracking-widest uppercase text-accent"
+              style="font-variant: small-caps; letter-spacing: 0.15em;"
+              x-text="slide.badge"
+            ></span>
+          </template>
         </div>
 
-        <!-- H1 -->
-        <h1 class="font-heading font-extrabold text-white leading-tight mb-6" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">
-          Expert Surgical Care.<br />
-          Exceptional <span class="text-accent">Outcomes.</span>
-        </h1>
+        <!-- H1 (slide-specific) -->
+        <div class="mb-6 min-h-[7rem] sm:min-h-[8rem] lg:min-h-[9rem]">
+          <template x-for="(slide, idx) in slides" :key="idx">
+            <h1
+              x-show="current === idx && !slide.poster"
+              x-transition:enter="transition ease-out duration-700"
+              x-transition:enter-start="opacity-0 translate-y-3"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              class="font-heading font-extrabold text-white leading-tight"
+              style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;"
+              x-html="slide.h1"
+            ></h1>
+          </template>
+        </div>
 
-        <!-- Subheading -->
-        <p class="text-[#A8BFD0] text-lg lg:text-xl font-light leading-relaxed mb-10 max-w-xl">
-          Since 1969, Citi Surgeons Hospital has provided world-class tertiary surgical care to patients across Benin City and the South-South region of Nigeria.
-        </p>
+        <!-- Subheading (slide-specific) -->
+        <div class="mb-10 max-w-xl min-h-[5rem]">
+          <template x-for="(slide, idx) in slides" :key="idx">
+            <p
+              x-show="current === idx && !slide.poster"
+              x-transition:enter="transition ease-out duration-700 delay-100"
+              x-transition:enter-start="opacity-0 translate-y-2"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              class="text-[#A8BFD0] text-lg lg:text-xl font-light leading-relaxed"
+              x-text="slide.sub"
+            ></p>
+          </template>
+        </div>
 
         <!-- CTAs -->
         <div class="flex flex-wrap gap-4">
           <a
-            href="https://wa.me/2348032161331"
+            href="https://wa.me/2349152356799"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold px-7 py-3.5 rounded-md transition-colors shadow-lg"
@@ -159,12 +249,35 @@
       </div>
     </div>
 
-    <!-- Scroll chevron -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
-      <span class="text-[10px] tracking-widest uppercase text-white/40 font-medium">Scroll</span>
-      <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
+    <!-- Poster CTA (shown only on poster slide) -->
+    <div
+      x-show="slides[current].poster"
+      x-transition:enter="transition ease-out duration-700 delay-300"
+      x-transition:enter-start="opacity-0 translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      class="absolute bottom-24 left-1/2 -translate-x-1/2 z-20"
+    >
+      <a
+        href="https://wa.me/2349152356799?text=I%27d%20like%20to%20book%20a%20free%20breast%20screening"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2.5 bg-[#0D2B5E] hover:bg-[#1E3A5F] text-white font-semibold px-6 py-3 rounded-md shadow-lg transition-colors text-sm"
+      >
+        Reserve a Free Screening Slot
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Slide indicators -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+      <template x-for="(slide, idx) in slides" :key="idx">
+        <button
+          @click="current = idx"
+          :class="current === idx ? 'bg-accent w-10' : 'bg-white/40 w-2 hover:bg-white/70'"
+          class="h-2 rounded-full transition-all duration-300"
+          :aria-label="`Go to slide ${idx + 1}`"
+        ></button>
+      </template>
     </div>
   </section>
 
@@ -220,7 +333,7 @@
         <!-- Right: Hospital Building Photo -->
         <div data-aos="fade-left" class="relative">
           <img
-            src="hospital building.webp"
+            src="hospital-building.jpg"
             alt="Citi Surgeons Hospital — Ward 36A, Oredo, Benin City"
             class="rounded-lg shadow-xl w-full object-cover"
             style="max-height: 520px; object-position: center;"
@@ -311,7 +424,7 @@
           </div>
           <h3 class="font-heading font-bold text-dark text-lg mb-2">Accidents &amp; Emergencies</h3>
           <p class="text-muted text-sm leading-relaxed mb-3">Round-the-clock trauma and emergency surgical care available at all times.</p>
-          <a href="tel:+2348074278057" class="text-[#B91C1C] font-semibold text-sm">+234-807-427-8057</a>
+          <a href="tel:+2349152356799" class="text-[#B91C1C] font-semibold text-sm">+234-915-235-6799</a>
         </div>
       </div>
 
@@ -377,6 +490,58 @@
     </div>
   </section>
 
+  <!-- COMMUNITY INITIATIVE -->
+  <section class="py-24 bg-tint">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Community Outreach</p>
+        <h2 class="font-heading font-extrabold text-primary text-3xl lg:text-4xl mb-4">Free Clinical Breast Screening</h2>
+        <p class="text-muted max-w-xl mx-auto text-base leading-relaxed">
+          In partnership with the Breasts Savers Health Initiative (BSHI), we offer complimentary clinical breast screenings to every woman in our community.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-8 items-center" data-aos="fade-up" data-aos-delay="80">
+        <!-- Banner image -->
+        <div class="lg:col-span-3 rounded-xl overflow-hidden shadow-xl border border-gray-100">
+          <img src="breast-screening-banner.png" alt="Free Clinical Breast Screening — Every Wednesday 2PM to 5PM" class="w-full h-auto block" />
+        </div>
+
+        <!-- Info card -->
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-md border border-gray-100 p-8">
+          <div class="inline-flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-pink-700 bg-pink-50 border border-pink-200 px-2.5 py-1 rounded mb-5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Always Free
+          </div>
+          <h3 class="font-heading font-bold text-primary text-2xl mb-5 leading-tight">Early detection saves lives.</h3>
+
+          <ul class="space-y-3.5 mb-6">
+            <li class="flex items-start gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <div>
+                <p class="font-semibold text-dark text-sm">Every Wednesday</p>
+                <p class="text-muted text-sm">2:00 PM &mdash; 5:00 PM</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p class="text-muted text-sm leading-relaxed">Citi Surgeons / Oncology Hospital, Ward 36A, Oredo, Benin City</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="flex-shrink-0 mt-0.5" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <p class="text-muted text-sm leading-relaxed">Conducted by trained nurses and consultant breast surgeons</p>
+            </li>
+          </ul>
+
+          <a href="https://wa.me/2349152356799?text=I%27d%20like%20to%20book%20a%20free%20breast%20screening" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-primary hover:bg-slate2 text-white text-sm font-semibold px-5 py-3 rounded-md transition-colors w-full justify-center">
+            Reserve a Slot
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- AI CTA BANNER -->
   <section class="py-20 bg-primary relative overflow-hidden">
     <div class="absolute inset-0 hero-grid opacity-60"></div>
@@ -389,7 +554,7 @@
         Skip the queue. Reach our team instantly on WhatsApp to book your consultation, ask questions, or get directions to our facility.
       </p>
       <a
-        href="https://wa.me/2348032161331"
+        href="https://wa.me/2349152356799"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold px-8 py-4 rounded-md transition-colors shadow-lg text-base"
@@ -439,11 +604,15 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         <!-- Col 1: Brand -->
         <div>
-          <div class="mb-5">
-            <img src="banner.png" alt="Citi Surgeons Hospital" class="h-16 w-auto object-contain brightness-0 invert" />
-          </div>
+          <a href="index.html" class="flex items-center gap-3 mb-5">
+            <img src="logo.png" alt="Citi Surgeons Hospital" class="h-12 w-12 object-cover rounded-full" />
+            <div class="leading-tight">
+              <span class="block font-heading font-extrabold text-white text-base leading-none">Citi Surgeons</span>
+              <span class="block text-[10px] font-medium tracking-widest uppercase text-white/50">Hospital</span>
+            </div>
+          </a>
           <p class="text-white/50 text-sm leading-relaxed mb-5">Tertiary surgical healthcare serving Benin City and the South-South region since 1969.</p>
-          <a href="https://wa.me/2348032161331" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/30 text-[#25D366] text-sm font-medium px-4 py-2 rounded-md transition-colors">
+          <a href="https://wa.me/2349152356799" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/30 text-[#25D366] text-sm font-medium px-4 py-2 rounded-md transition-colors">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             WhatsApp Us
           </a>
@@ -485,8 +654,8 @@
             <div class="flex gap-3">
               <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.76 16z"/></svg>
               <div>
-                <a href="tel:+2348032161331" class="block text-white/50 hover:text-white text-sm transition-colors">+234-803-216-1331</a>
-                <a href="tel:+2348074278057" class="block text-[#B91C1C] hover:text-red-400 text-sm transition-colors">+234-807-427-8057 (Emergency)</a>
+                <a href="tel:+2349072761272" class="block text-white/50 hover:text-white text-sm transition-colors">+234-907-276-1272</a>
+                <a href="tel:+2349152356799" class="block text-[#B91C1C] hover:text-red-400 text-sm transition-colors">+234-915-235-6799 (Emergency)</a>
               </div>
             </div>
             <div class="flex gap-3">
@@ -508,7 +677,7 @@
   <!-- Floating WhatsApp Button -->
   <div class="wa-float fixed bottom-6 right-6 z-50">
     <a
-      href="https://wa.me/2348032161331"
+      href="https://wa.me/2349152356799"
       target="_blank"
       rel="noopener noreferrer"
       class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-xl hover:scale-110 transition-transform"
